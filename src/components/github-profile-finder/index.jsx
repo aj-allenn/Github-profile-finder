@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import User from './user.jsx'
 
 export default function GithubProfileFinder() {
 
@@ -23,7 +24,7 @@ export default function GithubProfileFinder() {
         console.log(data);
     }
 
-    // ✅ useEffect must be outside functions
+  
     useEffect(() => {
         fetchGithubUserData();
     }, []);
@@ -51,13 +52,7 @@ export default function GithubProfileFinder() {
             </div>
 
             {
-                userData !== null ? (
-                    <div>
-                        <img src={userData.avatar_url} width="150" />
-                        <h2>{userData.name}</h2>
-                        <p>{userData.bio}</p>
-                    </div>
-                ) : null
+               userData && <User user={userData}/>
             }
         </div>
     );
